@@ -26,5 +26,5 @@ jobs:
         uses: simple-elf/allure-report-action@master
         with:
           allure_results: allure-results
-          gh_pages: gh-pages
+          gh_pages: main
           allure_history: allure-history
