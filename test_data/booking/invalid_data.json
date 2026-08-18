@@ -1,0 +1,22 @@
+{
+    "missing field":    {
+    "firstname": "delhi",
+    "lastname": "suri",
+    "totalprice": 111,
+    "depositpaid": true,
+    "additionalneeds": "Breakfast"
+},
+  
+"invalid name":
+    {
+    "firstname": 1234,
+    "lastname": "khan",
+    "totalprice": 111,
+    "depositpaid": true,
+    "bookingdates": {
+        "checkin": "2013-02-23",
+        "checkout": "2014-10-23"
+    },
+    "additionalneeds": "Breakfast"
+}
+}

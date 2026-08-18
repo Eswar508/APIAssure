@@ -1,0 +1,11 @@
+    {
+    "firstname": "removed",
+    "lastname": "lastname",
+    "totalprice": 129,
+    "depositpaid": true,
+    "bookingdates": {
+        "checkin": "2013-04-11",
+        "checkout": "2019-19-18"
+    },
+    "additionalneeds": "ground"
+}

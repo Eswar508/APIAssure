@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  api-tests:
+    build: . 
+    container_name: restful_booker_tests
+    volumes:
+      - allure-results-data:/app/allure-results
+  
+  allure-ui:
+    image: frankescobar/allure-docker-service
+    container_name: allure_ui
+    environment:
+      CHECK-RESULTS_EVERY_SECONDS: 3
+      KEEP_HISTORY: 1
+    ports:
+      - "5050:5050"
+    volumes:
+      - allure-results-data:/app/allure-results
+
+volumes:
+  allure-results-data:
+    

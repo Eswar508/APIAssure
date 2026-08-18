@@ -1,0 +1,35 @@
+[
+    {
+    "firstname": "delete",
+    "lastname": "one",
+    "totalprice": 111,
+    "depositpaid": true,
+    "bookingdates": {
+        "checkin": "2013-03-13",
+        "checkout": "2014-19-28"
+    },
+    "additionalneeds": "books"
+},
+{
+    "firstname": "delete",
+    "lastname": "two",
+    "totalprice": 485,
+    "depositpaid": true,
+    "bookingdates": {
+        "checkin": "2013-08-14",
+        "checkout": "2014-12-24"
+    },
+    "additionalneeds": "speakers"
+},
+{
+    "firstname": "delete",
+    "lastname": "three",
+    "totalprice": 800,
+    "depositpaid": true,
+    "bookingdates": {
+        "checkin": "2013-07-02",
+        "checkout": "2014-10-21"
+    },
+    "additionalneeds": "disco"
+}
+]

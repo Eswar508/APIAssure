@@ -1,0 +1,34 @@
+ [
+    {
+        "header":"",
+        "data":
+        {
+            "firstname": "first",
+            "lastname": "person",
+            "totalprice": 111,
+            "depositpaid": true,
+            "bookingdates": {
+                "checkin": "2013-02-23",
+                "checkout": "2014-10-23"
+            },
+            "additionalneeds": "Breakfast"
+        },
+        "expected_code":200
+    },
+    {
+        "header":{"Cookie":"token={1234556}"},
+        "data":
+        {
+            "firstname": "second",
+            "lastname": "person",
+            "totalprice": 111,
+            "depositpaid": true,
+            "bookingdates": {
+                "checkin": "2013-02-23",
+                "checkout": "2014-10-23"
+            },
+            "additionalneeds": "Breakfast"
+        },
+        "expected_code":403
+    }
+    ]
