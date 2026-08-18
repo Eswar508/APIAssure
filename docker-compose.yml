@@ -5,6 +5,8 @@ services:
     container_name: restful_booker_tests
     volumes:
       - allure-results-data:/app/allure-results
+    environment:
+      - CI=true
   
   allure-ui:
     image: frankescobar/allure-docker-service
@@ -16,7 +18,8 @@ services:
       - "5050:5050"
     volumes:
       - allure-results-data:/app/allure-results
+    depends_on:
+      - api-tests
 
 volumes:
   allure-results-data:
-    
