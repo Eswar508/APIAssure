@@ -1,0 +1,3 @@
+None <class 'NoneType'>  is the headers
+https://restful-booker.herokuapp.com/booking  is the url  token=1e820e2581835fd  is the token
+200  is the status_code and  200  is the expected status code
