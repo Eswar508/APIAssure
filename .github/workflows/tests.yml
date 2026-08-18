@@ -8,53 +8,26 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: docker/setup-buildx-action@v3
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Run Tests
         run: docker compose up --exit-code-from api-tests
         continue-on-error: true
 
-      # 1. Dynamically find and copy allure-results from the compose container
-      - name: Copy Allure Results from Container
+      - name: Copy Allure Results
         if: always()
         run: |
-          CONTAINER_ID=$(docker compose ps -qa api-tests)
-          if [ -n "$CONTAINER_ID" ]; then
-            docker cp $CONTAINER_ID:/app/allure-results ./allure-results
-          else
-            echo "Container not found!"
-            mkdir -p ./allure-results
-          fi
+          docker cp restful_booker_tests:/app/allure-results ./allure-results
 
-      - name: Upload Allure Results Artifact
-        if: always() 
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results
-          path: allure-results/
-          retention-days: 30
-
-      # 2. Setup Java required by Allure CLI
-      - name: Setup Java
-        if: always()
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      # 3. Generate HTML report using official Allure action
       - name: Generate Allure Report
         if: always()
-        uses: allure-framework/setup-allure@v1
-        
-      - name: Build Report
-        if: always()
-        run: |
-          allure generate ./allure-results --clean -o ./allure-history
+        uses: simple-elf/allure-report-action@master
+        with:
+          allure_results: allure-results
+          allure_history: allure-history
 
-      # 4. Deploy report to gh-pages branch
-      - name: Deploy Allure Report to GitHub Pages
+      - name: Deploy to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
