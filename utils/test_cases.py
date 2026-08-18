@@ -2,7 +2,6 @@ from utils.routes import Routes
 from utils.logger import logger as log
 import time
 import requests
-import json
 from utils.data_loader import data_loader
 
 class TestCases:
@@ -60,12 +59,12 @@ class TestCases:
     @classmethod
     def deleted1(cls):
         load=data_loader("test_data/delete/deleted1_data.json")
-        print(load," is the load")
+        log().debug(f"Test data loaded: {load}")
         response=cls.session.post(cls.booking_url,json=load).json()
         id=response["bookingid"]
-        print(id," is the post response")
+        log().debug(f"Post response ID: {id}")
         r=cls.session.delete(cls.booking_url+"/"+str(id))
-        print(r.status_code," is the deleted response")
+        log().debug(f"Delete response status: {r.status_code}")
         time.sleep(1)
         return id
     @classmethod
@@ -100,13 +99,13 @@ class TestCases:
         return TestCases
     @classmethod
     def login(cls):
-        load=data_loader(r"test_data\login\data.json")
+        load=data_loader("test_data/login/data.json")
         return load
     @classmethod
     def invalid_login(cls):
-        load=data_loader(r"test_data\login\invalid_data.json")
+        load=data_loader("test_data/login/invalid_data.json")
         return load
     @classmethod
     def put_data(cls):
-        load=data_loader(r"test_data\edit\put_data.json")
+        load=data_loader("test_data/edit/put_data.json")
         return load

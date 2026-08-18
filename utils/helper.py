@@ -13,7 +13,7 @@ def get_token(response):
 def get_data(booking_client,data):
     id=[]
     body=[]
-    for load in data_loader("Test_cases/sample_data.json"):
+    for load in data_loader("test_data/booking/valid_data.json"):
         response=booking_client.create_booking(load)
         json=response.json()
         id.append(json["bookingid"])

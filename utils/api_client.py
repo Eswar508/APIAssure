@@ -15,7 +15,7 @@ class BaseSession:
         allure.attach(body=json.dumps(data,indent=4),name="data",attachment_type=allure.attachment_type.JSON)
         result=self.session.post(self.url, json=data)
         try:
-            self.log.info(f"generated token : {result.json()["token"]} for status code : {result.status_code}")
+            self.log.info(f"generated token : {result.json()['token']} for status code : {result.status_code}")
         except (ValueError,KeyError,requests.RequestException) as e:
             self.log.info(f"token generation failed : {str(e)}")
         return result

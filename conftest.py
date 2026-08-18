@@ -13,7 +13,5 @@ def Base_session():
     s.end_point(Routes.login)
     response=s.generate_token(data_loader("test_data/login/data.json"))
     token=get_token(response)
-    print(token," is the token present in headers")
     s.set_token(token)
-    print(f"{s.get_token()} is the token contained in header")
     return s

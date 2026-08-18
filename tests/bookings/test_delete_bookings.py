@@ -20,17 +20,19 @@ def test_delete_booking(booking_client:BaseSession,id:int):
 @allure.story("delete non existent id")
 @pytest.mark.delete_booking
 def test_delete_non_existent_booking(booking_client:BaseSession):
+    id=999999
     allure.dynamic.title(f"try to delete non existent id {id}")
     allure.dynamic.description(f"trying to delete non existent id {id} to check if the status code is 405 and a json message confirming that deleting failed")
     with allure.step("saving meta data"):
-        exe=Execute_with_data(booking_client,code=405,id=99999)
+        exe=Execute_with_data(booking_client,code=405,id=id)
     with allure.step("validating response"):
         exe.delete_response_Test()
 @allure.epic("delete")
 @allure.feature("incorrect id")
 @allure.story("delete deleted id")
 @pytest.mark.delete_booking
-def test_delete_deletedBooking(booking_client:BaseSession,id=TestCases.deleted0()):
+def test_delete_deletedBooking(booking_client:BaseSession, deleted_id_for_delete_test):
+    id = deleted_id_for_delete_test
     allure.dynamic.title(f"try to delete deleted id {id}")
     allure.dynamic.description(f"trying to delete deleted id {id} to check if the status code is 405 and a json message confirming that  deleting failed")
     with allure.step("saving meta data"):
@@ -40,7 +42,8 @@ def test_delete_deletedBooking(booking_client:BaseSession,id=TestCases.deleted0(
 @allure.epic("get data")
 @allure.feature("deleted id")
 @pytest.mark.delete_booking
-def test_get_deleted_booking(booking_client:BaseSession,id=TestCases.deleted1()):
+def test_get_deleted_booking(booking_client:BaseSession, deleted_id_for_get_test):
+    id = deleted_id_for_get_test
     allure.dynamic.title(f"get deleted  id {id}")
     allure.dynamic.description(f"trying to get deleted id {id} to check if the status code is 404 and a json message confirming that failed getting the id")
     with allure.step("saving meta data"):
